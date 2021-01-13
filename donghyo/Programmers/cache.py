@@ -1,33 +1,41 @@
+import re
+
 def solution(cacheSize, cities):
     answer = 0
     cache = []
 
     # 페이지 default 초기화
-    for i in range(cacheSize + 1):
+    for i in range(cacheSize):
         cache.append(0)
 
-    if cacheSize >= 0 and len(cities) <= 100000:
+    if cacheSize >= 0 and cacheSize <= 30 and len(cities) <= 100000 :
         for i in cities:
             i = i.upper()
-            # 해당 리스트에 포함되어 있지 않으면 cache miss
-            if not i in cache:
-                # cache list의 사이즈와 cache size 비교해 페이지가 꽉차있지 않으면 도시 추가 및 cache miss 시간 누적
-                if len(cache) < cacheSize:
-                    cache.append(i)
-                    answer += 5
+            if bool(re.search("[A-Z]", i)):
+                # 해당 리스트에 포함되어 있지 않으면 cache miss
+                if not i in cache:
+                    # cache list의 사이즈와 cache size 비교해 페이지가 꽉차있지 않으면 도시 추가 및 cache miss 시간 누적
+                    if len(cache) < cacheSize:
+                        cache.append(i)
+                        answer += 5
 
-                # 페이지가 꽉차있으면 제일 오래 쓰지 않은 원소 제거
+                    elif cacheSize == 0:
+                        answer += 5
+
+                    # 페이지가 꽉차있으면 제일 오래 쓰지 않은 원소 제거
+                    else:
+                        cache.pop(0)
+                        cache.append(i)
+                        answer += 5
+                        
+                # 포함되어 있으면 해당 인덱스의 원소를 제거하고 cache에 새로운 원소 추가
+                # cache hit 시간 누적
                 else:
-                    cache.pop(0)
+                    cache.pop(cache.index(i))
                     cache.append(i)
-                    answer += 5
-                    
-            # 포함되어 있으면 해당 인덱스의 원소를 제거하고 cache에 새로운 원소 추가
-            # cache hit 시간 누적
-            else:
-                cache.pop(cache.index(i))
-                cache.append(i)
-                answer += 1
+                    answer += 1
+    #         print(cache)
+    # print(answer)
     return answer
 
 cacheSize = 0
