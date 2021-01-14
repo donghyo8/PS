@@ -25,7 +25,7 @@ def solution(n, words):
                             number += 1
                         
                     else: # words의 마지막 글자와 다음 words의 첫글자가 같지 않을 경우 result 리턴
-                        if number == n:
+                        if number == n: 
                             number = 1
                             order += 1
                         else:

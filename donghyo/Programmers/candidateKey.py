@@ -1,7 +1,7 @@
 def solution(relation):
     answer = 0
 
-    
+        
 
 
 
