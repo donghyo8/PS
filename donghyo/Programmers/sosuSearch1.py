@@ -20,6 +20,7 @@ def solution(numbers):
         num_list.remove(1)
         
     answer = len(num_list) # 모든 수가 소수라 가정하고 시작
+    print(answer)
 
     for i in num_list :
         if i != 2 :
@@ -27,7 +28,7 @@ def solution(numbers):
                 if i % j== 0 :
                     answer -=1
                     break
-        
+    print(answer)
     return answer
 
 
