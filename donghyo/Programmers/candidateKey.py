@@ -1,9 +1,8 @@
 def solution(relation):
     answer = 0
 
-        
-
-
+    for i in range(len(relation)):
+        print(relation[i][0])
 
 
 
