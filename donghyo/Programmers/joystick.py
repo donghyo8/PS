@@ -36,7 +36,6 @@ def solution(name):
                         alphaRange = alphaRange - 1
                         resultList.append(name[i])
 
-
                     answer += alphaRange
 
             answer += 1
@@ -46,4 +45,4 @@ def solution(name):
     print(answer -1)
     return answer - 1
 
-solution("JAZ")
+solution("AAA")
