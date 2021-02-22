@@ -7,6 +7,7 @@ def solution(arr):
 
     answer = sum/len(arr)
 
+    print(answer)
     return answer
 
 solution([1,2,3,4])

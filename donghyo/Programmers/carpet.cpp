@@ -27,3 +27,5 @@ vector<int> solution(int brown, int red)
     }
     return answer;
 }
+
+solution(10,2)
