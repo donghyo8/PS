@@ -45,4 +45,4 @@ def solution(name):
     print(answer -1)
     return answer - 1
 
-solution("AAA")
+solution("BBAABAAAAB")

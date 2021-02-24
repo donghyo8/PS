@@ -17,7 +17,8 @@ def solution(tickets):
 
     while stack:
         node = stack[-1]
-        
+        print(node)
+
         if node not in dic or len(dic[node]) == 0:
             visited.append(stack.pop())
         else:
@@ -26,22 +27,6 @@ def solution(tickets):
     visited.reverse()
     answer = visited
     print(answer)
-
-    # while queue:
-    #     j = 0
-
-    #     while queue: 
-    #         if j == 2:
-    #             break
-
-    #         node = queue.pop()
-                
-    #         if node not in visited and str(node):
-    #             visited.append(node) 
-    #             queue.extend(reversed(tickets[i]))
-
-    #         j += 1
-    #     i += 1
 
     return answer
 
