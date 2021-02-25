@@ -29,7 +29,7 @@ def solution(begin, target, words):
         else:
             for i in range(len(words)):
                 if words[i] not in visited:
-                    print(top, words[i], validWord(top, words[i]))
+                    # print(top, words[i], validWord(top, words[i]))
                     if validWord(top, words[i]):
                         stack.append(words[i])
                         visited.append(words[i])
