@@ -5,7 +5,7 @@ def solution(n, words):
     order = 1
 
     if n >= 2 and n <= 10 and len(words) >= n and len(words) <= 100:
-        for i in range(0, len(words)):
+        for _ in range(0, len(words)):
             checkWord = words[0]
             
             print(words)

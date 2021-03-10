@@ -13,7 +13,7 @@ def solution(genres, plays):
     # total sum
     for i in range(len(genres)):
         sum_dic[genres[i]] += plays[i]
-
+    
     for key, value in sorted(sum_dic.items(),reverse=True, key=lambda x:x[1]):
         for i, indexValue in enumerate(sorted(dic[key],reverse=True, key =lambda x:x[1])):
             if i == full:
