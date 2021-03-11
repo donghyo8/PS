@@ -25,6 +25,7 @@ def solution(progresses, speeds):
         if workDayList[i-count] < workDayList[i]:
             answer.append(count)
             count = 1
+            
         else:
             count += 1
 
