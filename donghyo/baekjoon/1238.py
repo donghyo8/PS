@@ -37,7 +37,7 @@ def main():
     N, M, X = map(int,input().split())
     graph = [[] for _ in range(N)]
 
-    for i in range(M):
+    for _ in range(M):
         startPoint, endPoint, time = map(int, input().split())
         graph[startPoint-1].append([endPoint-1, time])
 

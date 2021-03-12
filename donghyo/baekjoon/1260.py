@@ -2,19 +2,27 @@ from collections import deque
 
 def bfs(graph, startNode, visited):
     queue = deque([startNode])
-    visited[startNode] = True
-    result = list()
+    visited = list()
 
     while queue:
         node = queue.popleft()
-        result.append(node)
-        
-        for i in graph[node]:
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
-    print(visited)
-    return result
+
+        if node not in visited:
+            visited.append(node)
+            queue.extend(graph[node])
+    return visited
+
+def dfs(graph, startNode, visited):
+    stack = deque([startNode])
+    visited = list()
+
+    while stack:
+        node = stack.pop()
+
+        if node not in visited:
+            visited.append(node)
+            stack.extend(reversed(graph[node]))
+    return visited
 
 n, m, v = map(int,input().split())
 
@@ -25,7 +33,6 @@ for _ in range(m):
     graph[i].append(j)
     graph[j].append(i)
 
+print(graph)
+print(dfs(graph, v, [False] * (n + 1)))
 print(bfs(graph, v, [False] * (n + 1)))
-    
-
-
