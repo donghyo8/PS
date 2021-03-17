@@ -28,6 +28,8 @@ matrix = list()
 for _ in range(M):
     matrix.append(list(map(int, input().split())))
 
+print(matrix)
+
 visited = [[-1] * N for _ in range(M)]
 
 print(solv(0, 0))
