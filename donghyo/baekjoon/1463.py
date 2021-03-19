@@ -14,4 +14,4 @@ def solution(N):
 
     return answer
 
-solution(2)
+solution(10)
