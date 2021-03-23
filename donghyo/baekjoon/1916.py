@@ -9,10 +9,12 @@ def dijkstra(start, arrive, graph, updateList):
 
     while queue:
         current_weight, current_destination = heapq.heappop(queue)
-   
+    
         for new_destination, new_weight in graph[current_destination]:
             next_weight = current_weight + new_weight
 
+        # 이동할 updateList[new_destination]의 가중치가 현재 가중치(current_weight) + 새 가중치(new_weight) 보다 크면 새 가중치를 새 도착지로 저장
+        # 힙에 새가중치랑, 새도착지를 저장하여 반복
             if next_weight < updateList[new_destination]:
                 updateList[new_destination] = next_weight
                 heapq.heappush(queue, [next_weight, new_destination])
