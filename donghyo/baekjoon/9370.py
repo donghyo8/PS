@@ -58,7 +58,10 @@ def main():
 
         resultList.append(dijkstra(s, x, g, h, graph, n))
 
-    # for i in resultList:
-    #     print(" ".join(str(i)))
+    print(resultList)
+
+    for i in resultList:
+        print(" ".join(str(i)))
+
 
 main()
