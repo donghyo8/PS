@@ -31,6 +31,7 @@ def main():
         start_city, arrive_city, cost = map(int, input().split())
         graph[start_city].append([arrive_city, cost])
 
+    print(graph)
     start, arrive = map(int, input().split())
     result = dijkstra(start, arrive, graph, updateList)
 
