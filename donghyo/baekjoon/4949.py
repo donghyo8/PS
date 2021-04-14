@@ -7,7 +7,9 @@ def main():
 
         for i in st:
             if i == '(' or i == '[':
-                stack.append(i)
+                stack.append(i) 
+
+                
             elif i == ')':
                 if stack and stack[-1] == '(':
                     stack.pop()
