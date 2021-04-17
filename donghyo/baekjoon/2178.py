@@ -14,8 +14,6 @@ def bfs(N, M, matrix, i, j, visited):
       if x == N - 1 and y == M - 1:
          return visited[x][y]  
           
-      print(visited)
-
       for i in range(4):
             check_x, check_y = x + validx[i], y + validy[i]
             if 0 <= check_x < N and 0 <= check_y < M:
