@@ -44,6 +44,7 @@ def setWall(wall):
 
 N, M = map(int, input().split())
 matrix =[list(map(int, input().split())) for _ in range(N)]
+print(matrix)
 safe_Area = 0
 result = 0
 setWall(0)
