@@ -17,10 +17,8 @@ def bfs(numbers, target):
             
     return result
     
-
 def solution(numbers, target):
     answer = 0
-
     answer = bfs(numbers, target)
 
     print(answer)
