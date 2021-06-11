@@ -12,42 +12,39 @@ def solution():
         for i in range(4):
             check_x1, check_y1 = x + valid_x[i], y + valid_y[i]
 
-            if 0 <= check_x1 < C and 0 <= check_y1 < R:
-                if matrix[check_x1][check_y1] == "J" and matrix[check_x1][check_y1] == ".":
-                    matrix[check_x1][check_y1] = "F"
+            if 0 <= check_x1 < R and 0 <= check_y1 < C:
+                if matrix[check_x1][check_y1] != "#" and not visited_a[check_x1][check_y1]:
+                    visited_a[check_x1][check_y1] = visited_a[x][y] + 1
                     queue1.append([check_x1, check_y1])
 
     while queue2:
-        for _ in range(len(queue2)):
-            x, y = queue2.popleft()
+        x, y = queue2.popleft()
 
-            for i in range(4):
-                check_x2, check_y2 = x + valid_x[i], y + valid_y[i]
+        for i in range(4):
+            check_x2, check_y2 = x + valid_x[i], y + valid_y[i]
 
-                if 0 <= check_x2 < C and 0 <= check_y2 < R:
-                    if visited_b[check_x2][check_y2] != 1 and matrix[check_x2][check_y2] == ".":
-                        visited_b[check_x2][check_y2] = 1
+            if 0 <= check_x2 < R and 0 <= check_y2 < C:
+                if matrix[check_x2][check_y2] != "#" and not visited_b[check_x2][check_y2]:
+                    if not visited_a[check_x2][check_y2] or visited_a[check_x2][check_y2] > visited_b[x][y]+1:
+                        visited_b[check_x2][check_y2] = visited_b[x][y] + 1
                         queue2.append([check_x2, check_y2])
-    
-    # 추가 구현필요 
-    
-    return "IMPOSSIBLE"
-    
+            else:
+                return visited_b[x][y] + 1
 
+    return "IMPOSSIBLE"
 
 R, C = map(int, input().split())
 
 if R >= 1 and C <= 1000:
     matrix = [list(map(str, input())) for _ in range(R)]
     visited_a = visited_b = [[0] * C for _ in range(R)]
-    jihoon = fire = deque()
+    jihoon = fire = []
 
-    for i in range(C):
-        for j in range(R):
+    for i in range(R):
+        for j in range(C):
             if matrix[i][j] == "J":
                 jihoon.append([i, j])
             elif matrix[i][j] == "F":
                 fire.append([i, j])
 
-    print()
     print(solution())
