@@ -1,4 +1,3 @@
-
 def solution(nums):
     answer = 0
 
@@ -19,8 +18,8 @@ def solution(nums):
         print(new_List)
         print(answer)
 
-
     return answer
+
 
 nums1 = [3, 1, 2, 3]
 nums2 = [3, 3, 3, 2, 2, 4]
