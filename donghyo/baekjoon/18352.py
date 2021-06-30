@@ -1,6 +1,7 @@
 import heapq
 import sys
 
+
 def dijkstra(graph, start, updateList):
     queue = list()
     heapq.heappush(queue, [0, start])
@@ -18,7 +19,7 @@ def dijkstra(graph, start, updateList):
 
     return updateList
 
-        
+
 N, M, K, X = map(int, input().split())
 graph = [[] for _ in range(N+1)]
 updateList = [[sys.maxsize] for _ in range(N+1)]
@@ -37,5 +38,3 @@ for i in range(1, N+1):
 
 if not flag:
     print(-1)
-    
-
