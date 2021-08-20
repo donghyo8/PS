@@ -1,41 +1,57 @@
-def change(variable_name, file_type):
-    if file_type: 
-        for i in range(len(variable_name)-1):
-            if variable_name[i] == '_':
-                if variable_name[i+1] != '_':
-                    variable_name[i+1] = variable_name[i+1].upper()
-                    res = "".join(variable_name)
-                    res = str("".join(res.split("_")))
-                else:
-                    print("Error!")
-                    exit()
-
-    else: 
-        idx_list = []
-        cursor = 0
-        for i in range(len(variable_name)-1):
-            if variable_name[i].isupper() :
-                idx_list.append(i)
-
-        for idx in idx_list:
-            variable_name.insert(idx + cursor, "_")
-            cursor += 1
-
-        for i in range(len(variable_name)-1):
-            if variable_name[i] == '_':
-                variable_name[i+1] = variable_name[i+1].lower()
-                res = "".join(variable_name)
-    return res
-
-
-variable_name = list(input())
-
-if '_' in variable_name and variable_name[0].islower():
-    file_type = True 
-elif not '_' in variable_name and variable_name[0].islower():
-    file_type = False 
-elif variable_name[0].isupper() or variable_name[0] == '_' or variable_name[-1] == '_':
+def print_Error():
     print("Error!")
     exit()
-    
-print(change(variable_name, file_type))
+
+def file_type_check(data):
+    if '_' in data:
+        sub_idx = 0
+        for idx, token in enumerate(data):
+            if idx == 0 and not data[idx].islower() or token.isupper():
+                    print_Error()
+            elif token == '_':
+                if token == '_' and idx == 0 or len(data) == idx + 1:
+                    print_Error()
+
+                underbar_idx.append(idx)
+                underbar_next_idx.append(idx + 1)
+
+                if data[underbar_next_idx[sub_idx]].islower():
+                    state = True
+                    sub_idx += 1
+                else:
+                    print_Error()
+    else:
+        state = False
+        for idx, token in enumerate(data):
+            if idx == 0 and data[idx].isupper():
+                print_Error()
+            elif token.isupper() and idx > 0:
+                underbar_idx.append(idx)
+                underbar_next_idx.append(idx - 1)
+            elif token == " " or token == '_':
+                print_Error()
+    return state
+
+def cpp_by_java_change(data):
+    for idx_1, idx_2 in zip(underbar_idx, underbar_next_idx):
+        data[idx_1] = ""
+        convert_alpha = data[idx_2].upper()
+        data[idx_2] = convert_alpha
+
+    return "".join(data)
+
+def java_by_cpp_change(data):
+    for idx_1, idx_2 in zip(underbar_idx, underbar_next_idx):
+        data[idx_1] = data[idx_1].lower()
+        data[idx_2] += '_'
+
+    return "".join(data)
+
+if __name__ == "__main__":
+    underbar_idx, underbar_next_idx = [], []
+    S = list(str(input()))
+
+    if bool(file_type_check(S)):
+        print(cpp_by_java_change(S))
+    else:
+        print(java_by_cpp_change(S))
