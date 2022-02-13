@@ -10,4 +10,5 @@ def dfs():
             seq_list.append(i)
             dfs()
             seq_list.pop()
+            print(seq_list)
 dfs()
